@@ -7,4 +7,4 @@ Simply Download The HTML File And Drop It in A Browser To Play
 
 <img src="https://github.com/wolandark/vimsnake/blob/main/img/snake.png">
 
-This Is A Fork Of [This](https://gist.github.com/ZiKT1229/5935a10ce818ea7b851ea85ecf55b4da)
+This Is A Fork Of [This](https://gist.github.com/straker/ff00b4b49669ad3dec890306d348adc4)

@@ -61,8 +61,14 @@ function loop() {
     snake.cells.pop();
   }
 
-  context.fillStyle = 'red';
-  context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+  // context.fillStyle = 'red';
+  // context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+context.fillStyle = 'red'; // Choose a color for the apple
+context.beginPath();
+context.arc(apple.x + grid / 2, apple.y + grid / 2, grid / 2, 0, Math.PI * 2);
+context.fill();
+
+
 
 context.fillStyle = 'green';
 snake.cells.forEach(function (cell, index) {

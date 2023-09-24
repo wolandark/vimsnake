@@ -64,31 +64,38 @@ function loop() {
   context.fillStyle = 'red';
   context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
 
-  context.fillStyle = 'green';
-  snake.cells.forEach(function(cell, index) {
-    context.fillRect(cell.x, cell.y, grid - 1, grid - 1);
+context.fillStyle = 'green';
+snake.cells.forEach(function (cell, index) {
+  // Calculate the center coordinates of the circle
+  var centerX = cell.x + grid / 2;
+  var centerY = cell.y + grid / 2;
 
-    if (cell.x === apple.x && cell.y === apple.y) {
-      snake.maxCells++;
-      eatenApples++;
+  // Draw a circle
+  context.beginPath();
+  context.arc(centerX, centerY, grid / 2, 0, Math.PI * 2);
+  context.fill();
+
+  if (cell.x === apple.x && cell.y === apple.y) {
+    snake.maxCells++;
+    eatenApples++;
+    apple.x = getRandomInt(0, 25) * grid;
+    apple.y = getRandomInt(0, 25) * grid;
+  }
+
+  for (var i = index + 1; i < snake.cells.length; i++) {
+    if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
+      snake.x = 160;
+      snake.y = 160;
+      snake.cells = [];
+      snake.maxCells = 4;
+      snake.dx = grid;
+      snake.dy = 0;
       apple.x = getRandomInt(0, 25) * grid;
       apple.y = getRandomInt(0, 25) * grid;
+      eatenApples = 0; // Reset the eaten apples count on collision
     }
-
-    for (var i = index + 1; i < snake.cells.length; i++) {
-      if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
-        snake.x = 160;
-        snake.y = 160;
-        snake.cells = [];
-        snake.maxCells = 4;
-        snake.dx = grid;
-        snake.dy = 0;
-        apple.x = getRandomInt(0, 25) * grid;
-        apple.y = getRandomInt(0, 25) * grid;
-        eatenApples = 0; // Reset the eaten apples count on collision
-      }
-    }
-  });
+  }
+});
 
   // Draw the eaten apples count
   drawEatenApplesCount();

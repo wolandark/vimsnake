@@ -1,28 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Vim Snake</title>
-  <meta charset="UTF-8">
-  <style>
-  html, body {
-    height: 100%;
-    margin: 0;
-  }
-
-  body {
-    background:#3C3836;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  canvas {
-    border: 1px solid #a89984;
-  }
-  </style>
-</head>
-<body>
-<canvas width="400" height="400" id="game"></canvas>
-<script>
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
 
@@ -166,7 +141,4 @@ document.addEventListener('keydown', function(e) {
 
 // start the game
 requestAnimationFrame(loop);
-</script>
-</body>
-</html>
 
